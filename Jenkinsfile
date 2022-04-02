@@ -1,7 +1,9 @@
 pipeline {
-  agent any
-  triggers {
-   cron('H/15 * * * *')
+  agent {
+    node {
+      label 'master'
+    }
+
   }
   stages {
     stage('echo') {
@@ -10,5 +12,8 @@ pipeline {
       }
     }
 
+  }
+  triggers {
+    cron('H/15 * * * *')
   }
 }
